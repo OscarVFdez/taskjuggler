@@ -219,7 +219,7 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.twebF
       depends WMGame.tback
       depends WMGame.tMobileF
-      journalentry today "Modificación inicio tarea tests"{
+      journalentry 2025-04-04 "Modificación inicio tarea tests"{
         author dev1
         alert yellow
         summary "Se ha reprogamado esta tarea para que empiece como pronto el 15 de mayo de 2025."
@@ -293,6 +293,12 @@ textreport frame "" {
     formats html
     center '<[report id="overview"]>'
   }
+
+  
+  textreport plan "Plan Inicial" {
+    formats html
+    center '<[report id="plan_ini"]>'
+  }
   
   textreport "Status" {
     formats html
@@ -340,8 +346,8 @@ taskreport overview "" {
   caption 'All effort values are in man days.'
 }
 
-taskreport plan_inicial "" {
-  scenarios actual
+taskreport plan_ini "" {
+  scenarios plan
   headline "Planificación inicial del proyecto"
   columns bsi {title 'WBS'},
           name, start, end, effort, chart { ${TaskTip} }
