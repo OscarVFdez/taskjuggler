@@ -19,7 +19,7 @@ project pSix "Web Game"  2024-12-15 +5m {
   # the project reports. If not specified, the current day will be
   # used, but this will likely be outside of the project range, so it
   # can't be seen in the reports.
-  now 2025-02-25-13:00
+  now 2025-04-04-13:00
   # The currency for all money values is the US Dollar.
   currency "EUR"
 
@@ -68,6 +68,11 @@ resource dev2 "Samantha Müller" {
 }
 resource dev3 "Peter Green" {
   email "kkk@unizar.es"
+}
+
+resource dev4 "Óscar Ventas"
+{
+  email "839949@unizar.es"
 }
 
 # Now we specify the work packages. The whole project is described as
@@ -152,27 +157,27 @@ task WMGame "Web & Mobile Game" {
   {
     purge chargeset
     chargeset mFront
-    responsible dev1
+    responsible dev4
     depends WMGame.tback.tBEd
 
     task tGUId "Mobile GUI Design"
     {
       effort 10d
       actual:effort 15d
-      allocate dev1
+      allocate dev4
     }
 
     task tFEc "Mobile Front End Construction"
     {
       effort 20d
-      allocate dev1
+      allocate dev4
       depends WMGame.tMobileF.tGUId
     }
 
     task tFEt "Mobile Front End Test"
     {
       effort 5d
-      allocate dev1
+      allocate dev4
       depends WMGame.tMobileF.tFEc
     }
   }
@@ -181,25 +186,25 @@ task WMGame "Web & Mobile Game" {
   {
     purge chargeset
     chargeset cloud
-    responsible dev1
+    responsible dev4
     depends WMGame.tback.tbackDev
     task tCloudEv "Cloud Back End Evaluation"
     {
       effort 3d
-      allocate dev1
+      allocate dev4
     }
 
     task tCloudDep "Cloud Back End Deployment"
     {
       effort 2d
-      allocate dev1
+      allocate dev4
       depends WMGame.tCloud.tCloudEv
     }
 
     task tCloudTest "Cloud Back End Test"
     {
       effort 2d
-      allocate dev1
+      allocate dev4
       depends WMGame.tCloud.tCloudEv
     }
   }
@@ -213,6 +218,7 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.tback
       depends WMGame.tMobileF
       start 2025-05-15
+      journal 2025-04-04 "Se ha programado el inicio de las pruebas de aceptación para que empiecen como pronto el 15 de mayo de 2025."
       }
 
     
@@ -327,6 +333,17 @@ taskreport overview "" {
   hideresource @all
   balance cost rev
   caption 'All effort values are in man days.'
+}
+
+taskreport plan_inicial ""{
+  scenarios actual
+  headline "Planificación inicial del proyecto"
+  columns bsi {title 'WBS'},
+          name, start, end, effort, chart { ${TaskTip} }
+          timeformat "%a %Y-%m-%d"
+          loadunit days
+          hideresource @all
+          caption 'Valores de esfuerzo en días-persona'
 }
 
 
