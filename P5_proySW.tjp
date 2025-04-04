@@ -218,7 +218,7 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.twebF
       depends WMGame.tback
       depends WMGame.tMobileF
-      journalentry now "Modificación inicio tarea tests"{
+      journalentry 2025-04-04 "Modificación inicio tarea tests"{
         author dev1
         alert yellow
         summary "Se ha reprogamado esta tarea para que empiece como pronto el 15 de mayo de 2025."
