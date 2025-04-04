@@ -73,6 +73,7 @@ resource dev3 "Peter Green" {
 resource dev4 "Óscar Ventas"
 {
   email "839949@unizar.es"
+  limits { dailymax 4h }
 }
 
 # Now we specify the work packages. The whole project is described as
@@ -218,7 +219,7 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.twebF
       depends WMGame.tback
       depends WMGame.tMobileF
-      journalentry 2025-04-04 "Modificación inicio tarea tests"{
+      journalentry today "Modificación inicio tarea tests"{
         author dev1
         alert yellow
         summary "Se ha reprogamado esta tarea para que empiece como pronto el 15 de mayo de 2025."
@@ -339,15 +340,15 @@ taskreport overview "" {
   caption 'All effort values are in man days.'
 }
 
-taskreport plan_inicial ""{
+taskreport plan_inicial "" {
   scenarios actual
   headline "Planificación inicial del proyecto"
   columns bsi {title 'WBS'},
           name, start, end, effort, chart { ${TaskTip} }
-          timeformat "%a %Y-%m-%d"
-          loadunit days
-          hideresource @all
-          caption 'Valores de esfuerzo en días-persona'
+  timeformat "%a %Y-%m-%d"
+  loadunit days
+  hideresource @all
+  caption 'Valores de esfuerzo en días-persona'
 }
 
 
