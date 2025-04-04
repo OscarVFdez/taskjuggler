@@ -218,7 +218,11 @@ task WMGame "Web & Mobile Game" {
       depends WMGame.tback
       depends WMGame.tMobileF
       start 2025-05-15
-      journal 2025-04-04 "Se ha programado el inicio de las pruebas de aceptación para que empiecen como pronto el 15 de mayo de 2025."
+      journalentry 2025-04-04 "Modificación inicio tarea tests"{
+        author dev1
+        alert yellow
+        summary "Se ha reprogamado esta tarea para que empiece como pronto el 15 de mayo de 2025."
+        }
       }
 
     
